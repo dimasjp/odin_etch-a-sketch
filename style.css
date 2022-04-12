@@ -3,11 +3,26 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #FFAB76;
 }
 
-.gridContainer {
+.board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 700px;
+    height: 700px;
+    background-color: #FF6363;
+}
+
+#gridContainer {
     display: grid;
-    width: 500px;
-    height: 500px;
-    border: solid 5px black;
+    width: 600px;
+    height: 600px;
+    gap: 1px;
+}
+
+.gridFill {
+    background-color: black;
 }
