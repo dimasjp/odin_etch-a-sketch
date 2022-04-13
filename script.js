@@ -33,7 +33,11 @@ function fillGrid(e) {
     if (currentColor === 'mono') {
         e.target.style.backgroundColor = 'black';
     } else if (currentColor === 'rainbow') {
-        e.target.style.backgroundColor = 'red';
+        let colors = ['#EFFFFD', '#B8FFF9', '#85F4FF', '#42C2FF'];
+        let randomColors = colors[Math.floor(
+            Math.random() * colors.length,
+            )];
+        e.target.style.backgroundColor = randomColors;
     } else if (currentColor === 'eraser') {
         e.target.style.backgroundColor = 'white';
     }
