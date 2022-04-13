@@ -5,7 +5,7 @@ const blackbtn = document.querySelector('.blackbtn');
 const colorbtn = document.querySelector('.colorbtn');
 const eraserbtn = document.querySelector('.eraserbtn');
 
-const defaultColor = 'bnw';
+const defaultColor = 'mono';
 let currentColor = defaultColor;
 
 
@@ -25,12 +25,12 @@ function createGrid(size) {
     }
 }
 
-blackbtn.addEventListener('click', () => setCurrentColor('bnw'));
+blackbtn.addEventListener('click', () => setCurrentColor('mono'));
 colorbtn.addEventListener('click', () => setCurrentColor('rainbow'));
 eraserbtn.addEventListener('click', () => setCurrentColor('eraser'));
 
 function fillGrid(e) {
-    if (currentColor === 'bnw') {
+    if (currentColor === 'mono') {
         e.target.style.backgroundColor = 'black';
     } else if (currentColor === 'rainbow') {
         e.target.style.backgroundColor = 'red';
@@ -40,17 +40,39 @@ function fillGrid(e) {
 }
 
 
-function setCurrentColor(newMode) {
-    currentColor = newMode;
+function setCurrentColor(newColor) {
+    currentColor = newColor;
 }
 
-clearButton.addEventListener('click', clearGrid);
+clearButton.addEventListener('click', resetGrid);
 
-function clearGrid() {
+// function clearGrid() {
+//     while (gridContainer.hasChildNodes()) {
+//         gridContainer.removeChild(gridContainer.firstChild);
+//     }
+//     createGrid(16)
+// }
+
+function resetGrid() {
+    let promptCellSize = prompt("How big is the grid? (Max 100)");
+    let size = parseInt(promptCellSize, 10);
+    if (isNaN(size)) {
+        window.alert("Whoops! You didn't enter anything.");
+        return;
+    }
+    else if (size <= 0) {
+        window.alert("You must enter a positive integer. (Max 100)");
+        return;
+    }
+    else if (size > 100) {
+        window.alert("Sorry! Maximum size is 100.");
+        return;
+    }
+
     while (gridContainer.hasChildNodes()) {
         gridContainer.removeChild(gridContainer.firstChild);
     }
-    createGrid(16)
+    createGrid(size);
 }
 
 
